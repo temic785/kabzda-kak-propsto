@@ -1,60 +1,51 @@
 import React from "react";
 import styled from "styled-components";
-import {FirstBlock} from "./FirstBlock";
-import {SecondBlock} from "./SecondBlock";
-
+import "../../App.css";
 
 type OnOffPropstType = {
-    trafficLight: boolean;
+    onChange: () => void;
+    colorState: boolean;
 }
-
-
 export const OnOff = (props: OnOffPropstType) => {
     return (
         <OnOffStyled>
-            {props.trafficLight && <FirstBlock bgColor={"red"}/>}
-            {!props.trafficLight && <FirstBlock bgColor={"green"}/>}
-
+            <Square colorState={props.colorState}/>
+            <Circle colorState={props.colorState} onChange={props.onChange}/>
         </OnOffStyled>)
-
-
-    // if (props.trafficLight === true) {
-    //     return (
-    //     <OnOffStyled>
-    //         <FirstBlock bgColor={"red"}/>
-    //         <SecondBlock/>
-    //         <Circle/>
-    //     </OnOffStyled>)
-    // } else {
-    //     return (<OnOffStyled>
-    //         <FirstBlock/>
-    //         <SecondBlock bgColor={"green"}/>
-    //         <Circle/>
-    //     </OnOffStyled>)
-    // }
-
-
 };
 
+type SquareTypes = {
+    colorState: boolean;
+}
+const Square = ({colorState}: SquareTypes) => {
+    return (
+        <>
+            <div className="square" style={{backgroundColor: colorState ? "green" : ""}}>ON</div>
+            <div className="square" style={{backgroundColor: !colorState ? "red" : ""}}>OFF</div>
+        </>
+    )
+}
+
+type CircleTypes = {
+    colorState: boolean;
+    onChange: () => void;
+}
+const Circle = (props: CircleTypes) => {
+
+    const className = props.colorState ? "circle-green" : "circle-red"
+    return (
+        <div onClick={props.onChange} className={className}>
+        </div>
+    )
+}
 
 const OnOffStyled = styled.div`
     display: flex;
     justify-content: center;
     align-items: center;
-    gap: 20px;
+    gap: 5px;
     padding-top: 100px;
     flex-direction: row;
 `
-
-//
-// const Block = styled.div`
-//     width: 200px;
-//     height: 200px;
-//     border: 3px solid black;
-//     display: flex;
-//     justify-content: center;
-//     align-items: center;
-//     background-color: red;
-// `
 
 

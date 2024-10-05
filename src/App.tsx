@@ -1,9 +1,9 @@
-import React from "react";
+import React, {useState} from "react";
 import "./App.css";
-import {Dop} from "./Dop";
-import {OnOff} from "./components/OnOff/OnOff";
 import {Accordion} from "./components/Accordion/Accordion";
 import {Rating} from "./components/Rating/Rating";
+import {Dop} from "./Dop";
+import {OnOff} from "./components/OnOff/OnOff";
 
 const topCars = [
     {manufacturer: "BMW", model: "m5cs"},
@@ -12,14 +12,14 @@ const topCars = [
 ]
 
 function App() {
+    const [collapsed, setCollapsed] = useState<boolean>(true);
+    const [color, setColor] = useState<boolean>(true);
     return (
         <div className="App">
-            <Accordion title={"Menu"}/>
-            <Accordion title={"List"}/>
-            {/*<Dop data={topCars}/>*/}
-            {/*<OnOff trafficLight={true}/>*/}
-            {/*<OnOff trafficLight={false}/>*/}
+            <Accordion collapsed={collapsed} setCollapsed={() => setCollapsed(!collapsed)} title={"Menu"}/>
             <Rating/>
+            {/*<Dop data={topCars}/>*/}
+            <OnOff colorState={color} onChange={() => setColor(!color)}/>
         </div>
     );
 }
