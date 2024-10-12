@@ -4,7 +4,8 @@ import React from "react";
 
 
 export default {
-    component: Accordion
+    component: Accordion,
+    title: "Accordion",
 };
 
 
@@ -19,5 +20,12 @@ export const OpenedAccordion = () => {
     return <Accordion collapsed={false}
                       setCollapsed={() => {
                       }}
+                      title={"Menu"}/>
+}
+
+export const ModeChangingAccordion = () => {
+    const [state, setState] = React.useState(false);
+    return <Accordion collapsed={state}
+                      setCollapsed={() => setState(!state)}
                       title={"Menu"}/>
 }
