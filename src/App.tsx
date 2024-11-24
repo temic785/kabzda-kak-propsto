@@ -14,12 +14,20 @@ const topCars = [
 function App() {
     const [collapsed, setCollapsed] = useState<boolean>(true);
     const [color, setColor] = useState<boolean>(true);
+
+    const onClickCallBack = "some item was clicked"
+
     return (
         <div className="App">
-            <Accordion collapsed={collapsed} setCollapsed={() => setCollapsed(!collapsed)} title={"Menu"}/>
+            <Accordion collapsed={collapsed} setCollapsed={() => setCollapsed(!collapsed)} title={"Menu"}
+                       items={[{title: "Dasha", value: 1}, {title: "Artem", value: 2}, {
+                           title: "Roma",
+                           value: 3
+                       }, {title: "Nikita", value: 4}]} onClick={() => console.log(onClickCallBack)}/>
             <Rating/>
             {/*<Dop data={topCars}/>*/}
             <OnOff colorState={color} onChange={() => setColor(!color)}/>
+            
         </div>
     );
 }

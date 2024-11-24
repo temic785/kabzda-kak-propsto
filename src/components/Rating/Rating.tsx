@@ -1,8 +1,7 @@
 import React, {useState} from "react";
 
-type RatingPropsType = {}
 
-export const Rating = (props: RatingPropsType) => {
+export const Rating = () => {
 
     const [value, setValue] = useState(0)
     return (
