@@ -1,7 +1,8 @@
 import type {Meta, StoryObj} from "@storybook/react";
 import {Accordion} from "./Accordion";
 import {action} from "@storybook/addon-actions";
-import React from "react";
+import React, {useReducer} from "react";
+import {reducer, TOGGLE_COLLAPSED} from "./reducer";
 
 
 export default {
@@ -10,10 +11,11 @@ export default {
 };
 
 const onClickCallBack = action("some item was clicked")
+const [collapsed, dispatch] = useReducer(reducer, {collapsed: true});
 
 export const CollapsedAccordion = () => {
 
-    return <Accordion collapsed={true}
+    return <Accordion collapsed={collapsed.collapsed}
                       setCollapsed={() => {
                       }}
                       title={"Menu"}
@@ -24,7 +26,7 @@ export const CollapsedAccordion = () => {
 
 }
 export const OpenedAccordion = () => {
-    return <Accordion collapsed={false}
+    return <Accordion collapsed={collapsed.collapsed}
                       setCollapsed={() => {
                       }}
                       title={"Menu"}
@@ -35,9 +37,9 @@ export const OpenedAccordion = () => {
 }
 
 export const ModeChangingAccordion = () => {
-    const [state, setState] = React.useState(false);
-    return <Accordion collapsed={state}
-                      setCollapsed={() => setState(!state)}
+    // const [state, setState] = React.useState(false);
+    return <Accordion collapsed={collapsed.collapsed}
+                      setCollapsed={() => dispatch({type: TOGGLE_COLLAPSED})}
                       title={"Menu"}
                       items={[{title: "Dasha", value: 1}, {title: "Artem", value: 2}, {
                           title: "Roma",

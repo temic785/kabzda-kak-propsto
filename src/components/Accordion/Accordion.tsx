@@ -1,4 +1,5 @@
 import React from "react";
+import {StateType} from "./reducer";
 
 
 export type AccordionPropsType = {
@@ -13,6 +14,7 @@ type ItemsType = {
     title: string
     value: any
 }
+
 
 export const Accordion = ({title, collapsed, setCollapsed, items, onClick}: AccordionPropsType) => {
 
