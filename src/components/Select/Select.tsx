@@ -11,7 +11,7 @@ type SelectPropsType = {
     item: ItemsType[]
 }
 
-export const Select = (props: SelectPropsType) => {
+export const SelectSecret = (props: SelectPropsType) => {
 
     const [active, setActive] = useState<boolean>(false)
     const [hoveredElementValue, setHoveredElementValue] = useState(props.value)
@@ -46,3 +46,6 @@ export const Select = (props: SelectPropsType) => {
         </div>
     );
 };
+
+
+export const Select = React.memo(SelectSecret)

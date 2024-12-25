@@ -16,7 +16,7 @@ type ItemsType = {
 }
 
 
-export const Accordion = ({title, collapsed, setCollapsed, items, onClick}: AccordionPropsType) => {
+export const AccordionSecret = ({title, collapsed, setCollapsed, items, onClick}: AccordionPropsType) => {
 
 
     return (
@@ -27,6 +27,9 @@ export const Accordion = ({title, collapsed, setCollapsed, items, onClick}: Acco
     );
 
 };
+
+export const Accordion = React.memo(AccordionSecret)
+
 
 type AccordionTitlePropsType = {
     title: string;

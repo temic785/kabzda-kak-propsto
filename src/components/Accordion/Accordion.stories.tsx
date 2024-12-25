@@ -11,9 +11,9 @@ export default {
 };
 
 const onClickCallBack = action("some item was clicked")
-const [collapsed, dispatch] = useReducer(reducer, {collapsed: true});
 
 export const CollapsedAccordion = () => {
+    const [collapsed, dispatch] = useReducer(reducer, {collapsed: true});
 
     return <Accordion collapsed={collapsed.collapsed}
                       setCollapsed={() => {
@@ -26,6 +26,8 @@ export const CollapsedAccordion = () => {
 
 }
 export const OpenedAccordion = () => {
+    const [collapsed, dispatch] = useReducer(reducer, {collapsed: true});
+
     return <Accordion collapsed={collapsed.collapsed}
                       setCollapsed={() => {
                       }}
@@ -37,6 +39,8 @@ export const OpenedAccordion = () => {
 }
 
 export const ModeChangingAccordion = () => {
+    const [collapsed, dispatch] = useReducer(reducer, {collapsed: true});
+
     // const [state, setState] = React.useState(false);
     return <Accordion collapsed={collapsed.collapsed}
                       setCollapsed={() => dispatch({type: TOGGLE_COLLAPSED})}

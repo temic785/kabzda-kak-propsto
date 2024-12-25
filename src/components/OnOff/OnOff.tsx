@@ -6,13 +6,15 @@ type OnOffPropstType = {
     onChange: () => void;
     colorState: boolean;
 }
-export const OnOff = (props: OnOffPropstType) => {
+export const OnOffSecret = (props: OnOffPropstType) => {
     return (
         <OnOffStyled>
             <Square colorState={props.colorState}/>
             <Circle colorState={props.colorState} onChange={props.onChange}/>
         </OnOffStyled>)
 };
+
+export const OnOff = React.memo(OnOffSecret)
 
 type SquareTypes = {
     colorState: boolean;

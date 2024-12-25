@@ -1,7 +1,7 @@
 import React, {useState} from "react";
 
 
-export const Rating = () => {
+export const RatingSecret = () => {
 
     const [value, setValue] = useState(0)
     return (
@@ -16,6 +16,9 @@ export const Rating = () => {
         </div>
     );
 };
+
+export const Rating = React.memo(RatingSecret)
+
 
 type StarPopsType = {
     selected?: boolean
