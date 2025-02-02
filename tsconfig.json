@@ -21,6 +21,7 @@
     "jsx": "react-jsx"
   },
   "include": [
-    "src"
+    "src",
+    "storybook-static/sb-manager/globals-runtime.js"
   ]
 }
