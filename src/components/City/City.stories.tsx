@@ -1,5 +1,5 @@
 import {City, CityPropsType, CityType} from "./City";
-import React, {useCallback, useState} from "react";
+import React, {useCallback, useMemo, useState} from "react";
 import {v1} from "uuid";
 
 export default {
@@ -42,13 +42,14 @@ export const HelpsToReactCallback = () => {
     const [counter, setCounter] = useState<number>(0)
 
 
-    const allBelarusCity = useCallback(() => {
-        setCity(originalCities.filter(c => c.country === "Belarus"))
+    const allBelarusCity = useMemo(() => {
+        return () => {
+            setCity(originalCities.filter(c => c.country === "Belarus"))
+        }
     }, [city])
 
     const moreOneMillionPopulation = useCallback(() => {
         setCity(originalCities.filter(c => c.population > 1000000))
-
     }, [city])
 
     const cityWithWordMInName = useCallback(() => {
